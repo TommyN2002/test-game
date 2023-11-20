@@ -3,20 +3,13 @@ import { Stat } from "@/data/Types";
 import { Text, Stack, Grid, Progress, Title } from "@mantine/core";
 import { PlayStatBar } from "./PlayStatBar";
 export function Stats() {
-  const [hp, exp, gold, attack, stamina, mana] = useAppStore((s) => [
-    s.hp,
-    s.exp,
-    s.gold,
-    s.attack,
-    s.stamina,
-    s.mana,
-  ]);
+  const [hp, stamina, mana] = useAppStore((s) => [s.hp, s.stamina, s.mana]);
 
   return (
     <Stack>
-      <PlayStatBar category="Health" value={100} />
-      <PlayStatBar category="Stamine" value={50} />
-      <PlayStatBar category="Mana" value={25} />
+      <PlayStatBar category="Health" value={hp} />
+      <PlayStatBar category="Stamine" value={stamina * 2} />
+      <PlayStatBar category="Mana" value={mana * 4} />
 
       {/* <Text>HP : {hp}</Text>
       <Text>STAMINA : {stamina}</Text>

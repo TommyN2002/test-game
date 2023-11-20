@@ -15,6 +15,8 @@ export function SkillsList() {
     setEnemyHp,
     setExp,
     setGold,
+    setMana,
+    setStamina,
   ] = useAppStore((s) => [
     s.hp,
     s.exp,
@@ -26,18 +28,20 @@ export function SkillsList() {
     s.setEnemyHp,
     s.setExp,
     s.setGold,
+    s.setMana,
+    s.setStamina,
   ]);
 
   const attackEnemy = (skill: Skill) => {
     if (skill.resource === "mana") {
-      if (mana < skill.cost) {
-        mana - skill.cost;
+      if (mana >= skill.cost) {
+        setMana(mana - skill.cost);
         return;
       }
     }
     if (skill.resource === "stamina") {
-      if (stamina < skill.cost) {
-        stamina - skill.cost;
+      if (stamina >= skill.cost) {
+        setStamina(stamina - skill.cost);
         return;
       }
     }
