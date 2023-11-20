@@ -7,9 +7,16 @@ import {
   Image,
   Group,
   Badge,
+  Box,
+  Title,
 } from "@mantine/core";
 import { useState } from "react";
 import { Enemy } from "../components/Enemy";
+import { GameHeader } from "@/components/GameHeader";
+import { Battlefield } from "@/components/Battlefield";
+import { CharacterInfo } from "@/components/CharacterInfo";
+import { SkillsList } from "@/components/SkillsList";
+import { Inventory } from "@/components/Inventory";
 
 export default function Home() {
   const [hp, setHp] = useState(10);
@@ -23,17 +30,18 @@ export default function Home() {
   };
 
   return (
-    <Container fluid>
-      <Progress color="teal" value={hp * 10} />
-      <Text>{hp}</Text>
-      <Button variant="filled" color="lime" onClick={attack}>
-        test
-      </Button>
-      <Group grow wrap="nowrap">
-        <Enemy />
-        <Enemy />
-        <Enemy />
-        <Enemy />
+    <Container h={"100vh"} fluid>
+      <GameHeader />
+      <Battlefield />
+
+      <Group justify="space-between" align="center" grow>
+        <CharacterInfo />
+        <Title h={1}>
+          Inventory:
+          <Inventory />
+        </Title>
+
+        <SkillsList />
       </Group>
     </Container>
   );

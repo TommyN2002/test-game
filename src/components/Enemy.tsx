@@ -1,5 +1,5 @@
 import { useAppStore } from "@/Store/useAppStore";
-import { Mobs, Skill, Skills } from "@/data/Types";
+import { Mob, Mobs, Skill, Skills } from "@/data/Types";
 import { Text, Stack, Card, Title, Button } from "@mantine/core";
 import { useMemo } from "react";
 
@@ -28,7 +28,7 @@ export function Enemy() {
     s.setGold,
   ]);
 
-  const spawnEnemy = (mobs: Mobs) => {
+  const spawnEnemy = (mobs: Mob) => {
     if (mobs.health <= 0) {
       return;
     }

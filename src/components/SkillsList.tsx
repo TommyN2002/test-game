@@ -1,6 +1,6 @@
 import { useAppStore } from "@/Store/useAppStore";
-import { Skill, Skills } from "@/data/Types";
-import { Text, Stack, Card, Title, Button } from "@mantine/core";
+import { Skill, Skills, Stat } from "@/data/Types";
+import { Text, Stack, Card, Title, Button, SimpleGrid } from "@mantine/core";
 import { useMemo } from "react";
 
 export function SkillsList() {
@@ -31,11 +31,13 @@ export function SkillsList() {
   const attackEnemy = (skill: Skill) => {
     if (skill.resource === "mana") {
       if (mana < skill.cost) {
+        mana - skill.cost;
         return;
       }
     }
     if (skill.resource === "stamina") {
       if (stamina < skill.cost) {
+        stamina - skill.cost;
         return;
       }
     }
@@ -67,5 +69,5 @@ export function SkillsList() {
     </Card>
   ));
 
-  return <Stack>{renderSkills}</Stack>;
+  return <SimpleGrid cols={3}> {renderSkills}</SimpleGrid>;
 }
